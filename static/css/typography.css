@@ -1,0 +1,59 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url("/static/fonts/Raleway-1.woff2") format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url("/static/fonts/Raleway-3.woff2") format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Typography scales */
+h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+h4 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+h5 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.8125rem;
+    font-weight: 700;
+}
+
+body {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+button, a {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
+}
+
+/* Add additional styles as needed */
