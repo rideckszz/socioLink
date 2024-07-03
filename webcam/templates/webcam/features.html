@@ -3,9 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Features - socioLink</title>
+    <title>Ferramentas</title>
     {% load static %}
     <link rel="stylesheet" href="{% static '/css/bootstrap.min.css'%}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.png' %}">
+
  <!--  <link rel="stylesheet" href="{% static '/css/Raleway.css'%}"> -->
     <link rel="stylesheet" href="{% static '/css/bs-theme-overrides.css'%}">
     <link rel="stylesheet" href="{% static 'css/typography.css' %}">
@@ -185,6 +187,15 @@
             </div>
         </div>
     </footer>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QSDBB0TJNS"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QSDBB0TJNS');
+    </script>
     <script src="{% static 'navbar.js' %}"></script>
 
     <script src="{% static 'bootstrap.min.js' %}"></script>

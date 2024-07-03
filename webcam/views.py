@@ -37,9 +37,6 @@ def sobre(request):
 def referencias(request):
     return render(request, 'webcam/referencias.html')
 
-# Define the index view
-def indexantigo(request):
-    return render(request, 'webcam/indexantigo.html')
 
 def generate_image(prompt: str, output_file: str, api_key: str):
     print(f"Generating image with prompt: {prompt}")
