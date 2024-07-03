@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/Raleway.css' %}">
     <link rel="stylesheet" href="{% static 'css/bs-theme-overrides.css' %}">
+    <script src="{% static 'navbar.js' %}"></script>
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -67,6 +68,14 @@
                                     <option value="boy">Menino</option>
                                     <option value="girl">Menina</option>
                                     <option value="non-binary person">Não-Binário</option>
+                                    <option value="princess">Princesas</option>
+                                    <option value="robot">Robô</option>
+                                    <option value="unicorn">Unicórnio</option>
+                                    <option value="cat">Gato</option>
+                                    <option value="dog">Cachorro</option>
+                                    <option value="penguin">Pinguim</option>
+                                    <option value="astronaut">Astronauta</option>
+
                                 </select>
                             </div>
                             <div class="mb-3">
@@ -123,16 +132,13 @@
                     <h3 class="display-6 fw-bold pb-4 mb-4">Como funciona?<span class="underline"></span></h3>
                 </div>
                 <div class="col-md-8 col-xl-6 pt-4">
-                    <p class="text-muted">O processo de criação de imagens envolve várias etapas:</p>
+                    <p class="text-muted">O processo de criação de imagens com IA usando o Stable Diffusion envolve várias etapas:</p>
                     <ul class="text-muted">
                         <li><strong>Comando:</strong> O prompt da imagem é criado.</li>
+                        <li><strong>Codificação:</strong> O prompt é convertido em uma representação numérica compreensível pelo modelo.</li>
+                        <li><strong>Difusão:</strong> A imagem é gerada através de um processo iterativo de refinamento usando a técnica de difusão, onde o modelo ajusta incrementalmente os pixels da imagem.</li>
+                        <li><strong>Decodificação:</strong> A imagem final é convertida de volta para um formato visual compreensível.</li>
                     </ul>
-                </div>
-            </div>
-            <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-                <div class="col d-flex justify-content-between flex-xl-column">
-                    <div class="card border-light border-1 d-flex flex-grow-1 justify-content-center p-2 me-3 me-xl-0 mb-xl-4"></div>
-                    <div class="card border-light border-1 d-flex flex-grow-1 justify-content-center p-2"></div>
                 </div>
             </div>
         </div>
