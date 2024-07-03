@@ -47,7 +47,7 @@ def custom_500(request):
 def generate_image(prompt: str, output_file: str, api_key: str):
     print(f"Generating image with prompt: {prompt}")
     response = requests.post(
-        "https://api.stability.ai/v2beta/stable-image/generate/core",
+        "https://api.stability.ai/v2beta/stable-image/generate/ultra",
         headers={
             "authorization": f"Bearer {api_key}",
             "accept": "image/*"
@@ -76,7 +76,7 @@ def escreve_ai(request):
         card_text = request.POST.get("card_text")
         print(f"Character: {character}, Action: {action}, Card Text: {card_text}")
         if character and action and card_text:
-            prompt = f"{character} {action}"
+            prompt = f"{character} {action} with a cartoon style"
             # Generate a unique filename
             unique_filename = f"generated_image_{uuid.uuid4()}.png"
             output_file = os.path.join(settings.MEDIA_ROOT, unique_filename)

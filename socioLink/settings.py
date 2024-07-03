@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^uxc3^i6#rbe&nqdquw&uazee^7o3qhs9&18dpsczum-bd#+06
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['3.131.68.179', 'www.sociolink.com.br', 'sociolink.com.br']
 
 
 
