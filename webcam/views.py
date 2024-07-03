@@ -10,13 +10,13 @@ import json
 from PIL import Image, ImageDraw, ImageFont
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, Input
-
 import requests
 from django.shortcuts import render
 from django.http import HttpResponse
 from .gerador import generate_image  # Import the generate_image function
 import os
 from django.conf import settings
+import uuid
 
 
 def index(request):
@@ -37,6 +37,11 @@ def sobre(request):
 def referencias(request):
     return render(request, 'webcam/referencias.html')
 
+def custom_404(request, exception):
+    return render(request, 'webcam/404.html', status=404)
+
+def custom_500(request):
+    return render(request, 'webcam/500.html', status=500)
 
 def generate_image(prompt: str, output_file: str, api_key: str):
     print(f"Generating image with prompt: {prompt}")
@@ -59,6 +64,7 @@ def generate_image(prompt: str, output_file: str, api_key: str):
         print(f"Image saved to {output_file}")
     else:
         raise Exception(str(response.json()))
+    
 @csrf_exempt
 def escreve_ai(request):
     image_url = None
@@ -70,8 +76,10 @@ def escreve_ai(request):
         print(f"Character: {character}, Action: {action}, Card Text: {card_text}")
         if character and action and card_text:
             prompt = f"{character} {action}"
-            output_file = os.path.join(settings.MEDIA_ROOT, "generated_image.png")
-            api_key = "sk-BlAswIFbvsosSIiUE7qMbQm9AfkWgsfXAGKvqOL4i8pdEz1b"  # Replace with your actual API key
+            # Generate a unique filename
+            unique_filename = f"generated_image_{uuid.uuid4()}.png"
+            output_file = os.path.join(settings.MEDIA_ROOT, unique_filename)
+            api_key = settings.API_KEY 
             print(f"Prompt: {prompt}, Output File: {output_file}")
             generate_image(prompt, output_file, api_key)
             print("Image generated")
@@ -80,14 +88,16 @@ def escreve_ai(request):
             image = Image.open(output_file)
             draw = ImageDraw.Draw(image)
             font_path = os.path.join(settings.STATIC_ROOT, 'fonts', 'Raleway-Black.ttf')  # Adjust the path to your font file
-            font = ImageFont.truetype(font_path, 72)
+            font = ImageFont.truetype(font_path, 114)
             bbox = draw.textbbox((0, 0), card_text, font=font)
             text_width, text_height = bbox[2] - bbox[0], bbox[3] - bbox[1]
-            text_position = ((image.width - text_width) / 2, image.height - text_height - 10)
+            
+            # Set text position with 10 pixels padding from the bottom
+            text_position = ((image.width - text_width) / 2, image.height - text_height - 70)
             draw.text(text_position, card_text, font=font, fill="white")
             image.save(output_file)
             
-            image_url = settings.MEDIA_URL + "generated_image.png"
+            image_url = settings.MEDIA_URL + unique_filename
             print(f"Image URL: {image_url}")
     else:
         print("Not a POST request")
