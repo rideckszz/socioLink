@@ -13,7 +13,6 @@ from tensorflow.keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2
 import requests
 from django.shortcuts import render
 from django.http import HttpResponse
-from .gerador import generate_image  # Import the generate_image function
 import os
 from django.conf import settings
 import uuid
@@ -42,6 +41,8 @@ def custom_404(request, exception):
 
 def custom_500(request):
     return render(request, 'webcam/500.html', status=500)
+
+
 
 def generate_image(prompt: str, output_file: str, api_key: str):
     print(f"Generating image with prompt: {prompt}")
