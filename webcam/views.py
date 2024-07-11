@@ -55,7 +55,7 @@ def generate_image(prompt: str, output_file: str, api_key: str):
         files={"none": ''},
         data={
             "prompt": prompt,
-            "output_format": "png",  # Ensuring output format is PNG
+            "output_format": "png", 
         },
     )
 
@@ -88,12 +88,12 @@ def escreve_ai(request):
             # Add text to the generated image
             image = Image.open(output_file)
             draw = ImageDraw.Draw(image)
-            font_path = os.path.join(settings.STATIC_ROOT, 'fonts', 'Raleway-Black.ttf')  # Adjust the path to your font file
+            font_path = os.path.join(settings.STATIC_ROOT, 'fonts', 'Raleway-Black.ttf')  
             font = ImageFont.truetype(font_path, 114)
             bbox = draw.textbbox((0, 0), card_text, font=font)
             text_width, text_height = bbox[2] - bbox[0], bbox[3] - bbox[1]
             
-            # Set text position with 10 pixels padding from the bottom
+
             text_position = ((image.width - text_width) / 2, image.height - text_height - 70)
             draw.text(text_position, card_text, font=font, fill="white")
             image.save(output_file)
@@ -105,7 +105,6 @@ def escreve_ai(request):
     return render(request, "webcam/escreveAI.html", {"image_url": image_url})
 
 
-# Define the model (as before)
 model = Sequential([
     Input(shape=(48, 48, 1)),
     Conv2D(32, kernel_size=(3, 3), activation='relu'),
@@ -123,11 +122,11 @@ model = Sequential([
     Dense(7, activation='softmax')
 ])
 
-# Load the model weights
+
 model_weights_path = os.path.join(settings.BASE_DIR, 'model.weights.h5')
 model.load_weights(model_weights_path)
 
-# Dictionary which assigns each label an emotion (alphabetical order)
+
 emotion_dict = {0: "Angry", 1: "Disgusted", 2: "Fearful", 3: "Happy", 4: "Neutral", 5: "Sad", 6: "Surprised"}
 
 @csrf_exempt
