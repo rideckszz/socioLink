@@ -8,9 +8,6 @@ socioLink is a web system designed to support individuals diagnosed with Autism 
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Phases](#project-phases)
-- [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Introduction
